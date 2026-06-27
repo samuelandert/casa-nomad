@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Casa Nomad — Your 24/7 Personal Concierge</title>
+<meta name="description" content="Whatever you wish, I'll solve it in under 24 hours (avg 7.4h). One message. Three hand-crafted options. — Chuck, Casa Nomad." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#faf7f2;
+    --bg-warm:#f4eee3;
+    --ink:#1a1712;
+    --ink-soft:#5c564b;
+    --line:#e2d9c9;
+    --gold:#b8924a;
+    --gold-deep:#9a7635;
+    --gold-light:#d8b978;
+    --navy:#16243c;
+    --navy-soft:#2a3c58;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Jost', -apple-system, system-ui, sans-serif;
+    --max:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.05;letter-spacing:.2px;}
+  .em{font-style:italic;color:var(--gold-deep);}
+  .kicker{font-family:var(--sans);font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);font-weight:500;}
+  a{color:inherit;}
+
+  /* ---------- masthead ---------- */
+  .top-rule{height:3px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--navy));}
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;background:rgba(250,247,242,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+  .mast{display:flex;align-items:center;justify-content:space-between;padding:26px 0;gap:20px;}
+  .brand{font-family:var(--serif);font-size:1.5rem;letter-spacing:.06em;font-weight:500;line-height:1;text-decoration:none;}
+  .brand small{display:block;font-family:var(--sans);font-size:.54rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-deep);margin-top:3px;font-weight:500;}
+  .navlinks{display:flex;gap:30px;align-items:center;}
+  .navlinks .ghost{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent;padding-bottom:3px;transition:.25s;}
+  .navlinks .ghost:hover{color:var(--ink);border-color:var(--gold);}
+  .nav-cta{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:#fff;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));text-decoration:none;padding:11px 22px;border-radius:50px;white-space:nowrap;box-shadow:0 10px 24px -14px rgba(154,118,53,.95);transition:.3s;}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(154,118,53,1);}
+
+  /* ---------- editorial section header ---------- */
+  .sec{padding:68px 0;}
+  .sec-top{display:flex;align-items:baseline;gap:18px;border-top:1.5px solid var(--ink);padding-top:16px;margin-bottom:38px;}
+  .sec-top .num{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold-deep);line-height:1;}
+  .sec-top h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-left:auto;text-align:right;max-width:62%;}
+  .sec-top .kicker{align-self:center;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:64px 0 76px;overflow:hidden;
+    background:radial-gradient(120% 80% at 92% 0%, rgba(184,146,74,.16), transparent 52%),
+               radial-gradient(70% 60% at -5% 110%, rgba(22,36,60,.07), transparent 60%),var(--bg);}
+  .hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(26,23,18,.03) 1px, transparent 1px);background-size:24px 24px;opacity:.55;}
+  .hero-inner{position:relative;z-index:2;}
+  .hero-kick{display:flex;align-items:center;gap:16px;margin-bottom:26px;}
+  .hero-kick .rule{height:1px;flex:1;max-width:80px;background:var(--gold);}
+  .hero h1{font-size:clamp(2.8rem,7.4vw,5.4rem);margin-bottom:36px;letter-spacing:-.5px;}
+  .hero h1 .em .avg{font-size:.38em;font-style:normal;font-weight:400;letter-spacing:.01em;color:var(--gold-deep);opacity:.8;vertical-align:middle;margin-left:8px;}
+  .hero-sub{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:300;color:var(--ink-soft);max-width:620px;line-height:1.4;}
+  .hero-sub b{color:var(--ink);font-weight:500;font-style:italic;}
+
+  /* golden offer — navy feature box */
+  .offer{position:relative;background:var(--navy);color:#f4ecdd;border-radius:5px;padding:32px 34px;box-shadow:0 30px 60px -34px rgba(22,36,60,.8);}
+  .offer:before{content:"";position:absolute;left:0;top:22px;bottom:22px;width:3px;background:linear-gradient(var(--gold-light),var(--gold-deep));}
+  .offer .tag{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);font-weight:500;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+  .offer p.big{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,1.9rem);line-height:1.18;font-weight:400;margin-bottom:22px;color:#fff;}
+  .offer p.big b{color:var(--gold-light);font-style:italic;font-weight:500;}
+  .offer ul{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .offer li{font-size:.96rem;letter-spacing:.02em;color:#d9d2c4;display:flex;align-items:center;gap:12px;padding-bottom:11px;border-bottom:1px solid rgba(216,185,120,.18);}
+  .offer li:last-child{border-bottom:0;padding-bottom:0;}
+  .offer li:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold-light);flex:none;}
+
+  /* ---------- steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--line);}
+  .step{padding:6px 30px 4px;border-right:1px solid var(--line);}
+  .step .n{font-family:var(--serif);font-style:italic;font-size:3rem;color:var(--gold);line-height:1;display:block;margin-bottom:14px;}
+  .step h3{font-size:1.5rem;margin-bottom:9px;}
+  .step p{font-size:.92rem;color:var(--ink-soft);}
+  .punch{margin-top:34px;font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.6vw,2rem);color:var(--navy);text-align:center;}
+  .punch b{color:var(--gold-deep);font-style:normal;font-weight:500;}
+
+  /* ---------- services ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .svc{background:var(--bg);padding:26px 28px;transition:.3s;}
+  .svc:hover{background:#fffdf8;}
+  .svc .h{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
+  .svc .h .i{font-size:.8rem;color:var(--gold);}
+  .svc h3{font-size:1.4rem;}
+  .svc p{font-size:.86rem;color:var(--ink-soft);}
+  .svc.extra{background:var(--navy);}
+  .svc.extra h3,.svc.extra .h .i{color:var(--gold-light);}
+  .svc.extra p{color:#cfc8ba;}
+
+  /* ---------- testimonials ---------- */
+  .alt{background:var(--bg-warm);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .words{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 36px;}
+  .quote{display:flex;flex-direction:column;border-top:1px solid var(--gold);padding-top:18px;}
+  .quote .stars{color:var(--gold);letter-spacing:3px;font-size:.74rem;margin-bottom:12px;}
+  .quote p{font-family:var(--serif);font-size:1.18rem;line-height:1.38;color:var(--ink);font-weight:300;margin-bottom:16px;flex:1;}
+  .quote p .hl{color:var(--gold-deep);font-style:italic;}
+  .who{display:flex;align-items:center;gap:11px;}
+  .who .av{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:1rem;color:#fff;background:var(--navy);}
+  .who b{font-family:var(--sans);font-weight:500;font-size:.84rem;display:block;}
+  .who span{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);}
+
+  /* ---------- final cta ---------- */
+  .final{background:var(--navy);color:#f4ecdd;text-align:center;padding:84px 0;position:relative;overflow:hidden;}
+  .final:after{content:"";position:absolute;inset:0;background:radial-gradient(60% 80% at 50% 0%, rgba(216,185,120,.14), transparent 60%);pointer-events:none;}
+  .final .kicker{color:var(--gold-light);position:relative;}
+  .final h2{font-size:clamp(2.2rem,5vw,3.6rem);margin:14px 0 18px;color:#fff;position:relative;}
+  .final p{color:#cfc8ba;max-width:480px;margin:0 auto 32px;position:relative;}
+  .cta-inline{position:relative;display:inline-flex;align-items:center;gap:11px;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));color:#fff;text-decoration:none;font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem;padding:16px 34px;border-radius:50px;box-shadow:0 18px 40px -16px rgba(0,0,0,.5);transition:.3s;}
+  .cta-inline:hover{transform:translateY(-3px);}
+
+  /* ---------- footer ---------- */
+  footer{background:#0f1929;color:#9aa4b4;padding:48px 0 34px;}
+  .foot{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;}
+  footer .brand{color:#f4ecdd;font-size:1.4rem;}
+  footer .brand small{color:var(--gold-light);}
+  .foot-nav{display:flex;gap:22px;flex-wrap:wrap;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;}
+  .foot-nav a{color:#9aa4b4;text-decoration:none;transition:.25s;}
+  .foot-nav a:hover{color:var(--gold-light);}
+  .foot-nav a.partner{color:var(--gold-light);}
+  .foot-base{margin-top:30px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08);font-size:.72rem;letter-spacing:.06em;color:#6c7686;}
+
+  /* ---------- pinned whatsapp ---------- */
+  .pin{position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:60;display:inline-flex;align-items:center;gap:13px;background:linear-gradient(135deg,#e4c485,var(--gold),var(--gold-deep));color:#241b08;text-decoration:none;padding:9px 22px 9px 9px;border-radius:50px;border:1px solid rgba(255,250,238,.45);box-shadow:0 18px 44px -14px rgba(154,118,53,.9), inset 0 1px 0 rgba(255,255,255,.35);transition:.35s cubic-bezier(.2,.7,.2,1);white-space:nowrap;}
+  .pin:hover{transform:translateX(-50%) translateY(-3px);box-shadow:0 26px 58px -16px rgba(154,118,53,1), inset 0 1px 0 rgba(255,255,255,.4);}
+  .pin .wa{width:40px;height:40px;border-radius:50%;flex:none;background:var(--navy);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px -4px rgba(0,0,0,.45);}
+  .pin .wa svg{width:23px;height:23px;fill:#fff;}
+  .pin .lbl{display:flex;flex-direction:column;line-height:1.16;}
+  .pin .lbl strong{font-family:var(--serif);font-size:1.08rem;font-weight:600;color:#231a07;}
+  .pin .lbl span{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#352407;font-weight:500;margin-top:2px;}
+  .pin .arr{color:#231a07;margin-left:2px;transition:.3s;}
+  .pin:hover .arr{transform:translateX(3px);}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- service marquee ---------- */
+  .marquee{overflow:hidden;background:var(--navy);padding:16px 0;border-top:3px solid var(--gold-deep);position:relative;}
+  .marquee:before,.marquee:after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none;}
+  .marquee:before{left:0;background:linear-gradient(90deg,var(--navy),transparent);}
+  .marquee:after{right:0;background:linear-gradient(270deg,var(--navy),transparent);}
+  .marq-track{display:inline-flex;align-items:center;white-space:nowrap;animation:marq 48s linear infinite;will-change:transform;}
+  .marquee:hover .marq-track{animation-play-state:paused;}
+  .m-item{font-family:var(--serif);font-style:italic;font-size:1.32rem;color:#efe6d5;}
+  .m-sep{color:var(--gold-light);margin:0 26px;font-size:.66rem;transform:translateY(-3px);}
+  @keyframes marq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- meet chuck ---------- */
+  .meet{display:flex;flex-direction:column;align-items:center;text-align:center;}
+  .portrait{margin:0 0 24px;}
+  .portrait .ph{position:relative;width:240px;aspect-ratio:4/5;border-radius:5px;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(155deg,#27364f,#16243c 58%,#0e1726);border:1px solid var(--navy-soft);box-shadow:0 38px 74px -42px rgba(22,36,60,.85);}
+  .portrait .ph .mono{font-family:var(--serif);font-style:italic;font-size:6rem;color:rgba(216,185,120,.22);line-height:1;}
+  .portrait .ph:after{content:"PHOTO OF CHUCK — REPLACE";position:absolute;bottom:18px;left:0;right:0;text-align:center;font-size:.54rem;letter-spacing:.26em;color:rgba(216,185,120,.45);}
+  .portrait figcaption{margin-top:14px;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);}
+  .meet-copy{max-width:560px;}
+  .meet-copy .kicker{display:block;margin-bottom:14px;}
+  .meet-copy h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:18px;}
+  .meet-copy p{font-size:1.16rem;color:var(--ink-soft);margin:0 auto 22px;}
+  .meet-copy .sig{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--navy);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:880px){
+    .wrap{padding:0 26px;}
+    .hero-grid{grid-template-columns:1fr;gap:32px;}
+    .meet{grid-template-columns:1fr;gap:26px;}
+    .portrait .ph{max-width:300px;}
+    .m-item{font-size:1.15rem;}
+    .sec-top h2{max-width:none;}
+    .steps{grid-template-columns:1fr;border-left:0;}
+    .step{border-right:0;border-bottom:1px solid var(--line);padding:18px 0;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .words{grid-template-columns:1fr 1fr;}
+    .navlinks .ghost{display:none;}
+  }
+  @media (max-width:540px){
+    .wrap{padding:0 20px;}
+    .hero{padding:44px 0 56px;}
+    .svc-grid,.words{grid-template-columns:1fr;}
+    .foot{flex-direction:column;align-items:flex-start;}
+    .pin .lbl span,.pin .arr{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="top-rule"></div>
+
+<header>
+  <div class="wrap mast">
+    <a class="brand" href="index.html">Casa Nomad<small>Concierge</small></a>
+    <nav class="navlinks">
+      <a class="ghost" href="#how">How it works</a>
+      <a class="ghost" href="#words">Clients</a>
+      <a class="nav-cta" href="https://wa.me/0000000000?text=Hi%20Chuck%2C%20I%27d%20like%20your%20help%20with..." target="_blank" rel="noopener">Just ask Chuck</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO — one banner, one pitch -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-kick">
+      <span class="rule"></span>
+      <span class="kicker">Private Concierge · Available 24/7</span>
+    </div>
+    <h1>Whatever you wish,<br><span class="em">consider it solved in &lt;24h <span class="avg">(avg. 7.4h)</span></span></h1>
+    <p class="hero-sub">No tabs, no calls, no chasing — <b>just one message away.</b></p>
+  </div>
+</section>
+
+<!-- SERVICE MARQUEE -->
+<div class="marquee" aria-label="What Chuck arranges">
+  <div class="marq-track">
+    <span class="m-item">Hard-to-get tables</span><span class="m-sep">✦</span>
+    <span class="m-item">Private drivers on call</span><span class="m-sep">✦</span>
+    <span class="m-item">VIP club access</span><span class="m-sep">✦</span>
+    <span class="m-item">Last-minute private jets</span><span class="m-sep">✦</span>
+    <span class="m-item">Sold-out concert tickets</span><span class="m-sep">✦</span>
+    <span class="m-item">Yacht charters, arranged</span><span class="m-sep">✦</span>
+    <span class="m-item">Michelin chef at home</span><span class="m-sep">✦</span>
+    <span class="m-item">Backstage &amp; guestlists</span><span class="m-sep">✦</span>
+    <span class="m-item">Personal shopping, handled</span><span class="m-sep">✦</span>
+    <span class="m-item">Exclusive spa retreats</span><span class="m-sep">✦</span>
+    <span class="m-item">Private city tours</span><span class="m-sep">✦</span>
+    <span class="m-item">First-class upgrades</span><span class="m-sep">✦</span>
+    <span class="m-item">Anniversary surprises</span><span class="m-sep">✦</span>
+    <span class="m-item">The impossible, made simple</span><span class="m-sep">✦</span>
+    <!-- duplicate set for seamless loop -->
+    <span class="m-item">Hard-to-get tables</span><span class="m-sep">✦</span>
+    <span class="m-item">Private drivers on call</span><span class="m-sep">✦</span>
+    <span class="m-item">VIP club access</span><span class="m-sep">✦</span>
+    <span class="m-item">Last-minute private jets</span><span class="m-sep">✦</span>
+    <span class="m-item">Sold-out concert tickets</span><span class="m-sep">✦</span>
+    <span class="m-item">Yacht charters, arranged</span><span class="m-sep">✦</span>
+    <span class="m-item">Michelin chef at home</span><span class="m-sep">✦</span>
+    <span class="m-item">Backstage &amp; guestlists</span><span class="m-sep">✦</span>
+    <span class="m-item">Personal shopping, handled</span><span class="m-sep">✦</span>
+    <span class="m-item">Exclusive spa retreats</span><span class="m-sep">✦</span>
+    <span class="m-item">Private city tours</span><span class="m-sep">✦</span>
+    <span class="m-item">First-class upgrades</span><span class="m-sep">✦</span>
+    <span class="m-item">Anniversary surprises</span><span class="m-sep">✦</span>
+    <span class="m-item">The impossible, made simple</span><span class="m-sep">✦</span>
+  </div>
+</div>
+
+<!-- MEET CHUCK -->
+<section class="sec meet-sec">
+  <div class="wrap meet">
+    <figure class="portrait reveal">
+      <div class="ph"><span class="mono">C</span></div>
+      <figcaption>Chuck · Your concierge</figcaption>
+    </figure>
+    <div class="meet-copy reveal">
+      <span class="kicker">The person behind it</span>
+      <h2>One human.<br>Anywhere you are.</h2>
+      <p>No portal, no queue — you talk to me. I remember what you like, I move quickly, and I treat your time as the luxury it is.</p>
+      <div class="sig">— Chuck</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" id="how">
+  <div class="wrap">
+    <div class="sec-top"><span class="num">01</span><span class="kicker">How it works</span><h2>Three steps.<br>One link. Done.</h2></div>
+    <div class="steps">
+      <div class="step"><span class="n">i</span><h3>You tell me</h3><p>One message with whatever you need — big, small, or out of the ordinary.</p></div>
+      <div class="step"><span class="n">ii</span><h3>You choose</h3><p>I return three hand-crafted options. You simply pick the one you love.</p></div>
+      <div class="step"><span class="n">iii</span><h3>You're set</h3><p>One simple payment link, and it's confirmed. I organize all the rest.</p></div>
+    </div>
+    <p class="punch">Stop comparing 200 tabs. <b>Just pick from three.</b></p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="sec-top"><span class="num">02</span><span class="kicker">Full-service concierge</span><h2>The supply side of effortless.</h2></div>
+    <div class="svc-grid">
+      <div class="svc"><div class="h"><span class="i">✦</span><h3>Restaurants</h3></div><p>Hard-to-get tables, exclusive bookings.</p></div>
+      <div class="svc"><div class="h"><span class="i">✦</span><h3>Private Drivers</h3></div><p>Chauffeur service at your destination.</p></div>
+      <div class="svc"><div class="h"><span class="i">✦</span><h3>VIP Nightlife</h3></div><p>Club access, guestlists, the best tables.</p></div>
+      <div class="svc"><div class="h"><span class="i">✦</span><h3>Culture &amp; Events</h3></div><p>Concerts, theatre, private tours.</p></div>
+      <div class="svc"><div class="h"><span class="i">✦</span><h3>Flights</h3></div><p>Best routes, flexible dates.</p></div>
+      <div class="svc extra"><div class="h"><span class="i">✦</span><h3>The Extraordinary</h3></div><p>Anything out of the ordinary. If it can be done, I'll find a way.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="words">
+  <div class="wrap">
+    <div class="sec-top"><span class="num">03</span><span class="kicker">In their words</span><h2>Clients who simply<br>stopped worrying.</h2></div>
+    <div class="words">
+      <div class="quote"><div class="stars">★★★★★</div><p>Booked a table three concierges told me was <span class="hl">impossible</span> — confirmed before my flight even landed.</p><div class="who"><div class="av">S</div><div><b>Sofia R.</b><span>Milan · Fashion</span></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>What I value is the <span class="hl">three options</span>. No 40 tabs, no decision fatigue — I just pick and it's done.</p><div class="who"><div class="av">J</div><div><b>James L.</b><span>London · Finance</span></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>Jet, driver and a private chef from <span class="hl">one message at 2am</span>. He replied in minutes. Unreal.</p><div class="who"><div class="av">A</div><div><b>Amira K.</b><span>Dubai · Family Office</span></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>It feels <span class="hl">personal</span>, not like an app. Chuck remembers what I like and gets it right.</p><div class="who"><div class="av">M</div><div><b>Marco B.</b><span>São Paulo · Founder</span></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>Anniversary in Paris, planned end-to-end while I worked. <span class="hl">Zero stress</span>, one clean link.</p><div class="who"><div class="av">E</div><div><b>Elena V.</b><span>Geneva · Private Client</span></div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>I travel constantly. <span class="hl">One person, 24/7</span>, who solves anything anywhere — that's the game.</p><div class="who"><div class="av">H</div><div><b>Henrik T.</b><span>Singapore · Tech</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <span class="kicker">One message away</span>
+    <h2>What may I <span class="em" style="color:var(--gold-light)">arrange for you?</span></h2>
+    <p>Available 24/7. Solved in under 24 hours — average 7.4h. Send the first message; I'll organize the rest.</p>
+    <a class="cta-inline" href="https://wa.me/0000000000?text=Hi%20Chuck%2C%20I%27d%20like%20your%20help%20with..." target="_blank" rel="noopener">Just ask Chuck on WhatsApp →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="index.html" style="text-decoration:none;">Casa Nomad<small>Private Concierge · 24/7</small></a>
+    <nav class="foot-nav">
+      <a href="#how">How it works</a>
+      <a href="#words">Clients</a>
+      <a class="partner" href="partners.html">For Partners →</a>
+      <a href="impressum.html">Impressum</a>
+    </nav>
+  </div>
+  <div class="wrap foot-base">© Casa Nomad · Whatever you wish, consider it handled.</div>
+</footer>
+
+<!-- PINNED WHATSAPP -->
+<a class="pin" href="https://wa.me/0000000000?text=Hi%20Chuck%2C%20I%27d%20like%20your%20help%20with..." target="_blank" rel="noopener">
+  <span class="wa" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2.1c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.4 0-4.7-.7-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.6-.3-.5C3.9 20.5 3.2 18.3 3.2 16 3.2 8.9 9 3.2 16 3.2S28.8 8.9 28.8 16 23 28.5 16 28.5zm7.3-9.6c-.4-.2-2.4-1.2-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.3-2-1.2-1.1-2-2.4-2.3-2.8-.2-.4 0-.6.2-.8l.6-.7c.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.6-.8-.7h-.7c-.2 0-.6.1-.9.5-.3.4-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .8.8.3 1.6.2 2.2.1.7-.1 2.1-.9 2.4-1.7.3-.8.3-1.5.2-1.7-.1-.1-.3-.2-.7-.4z"/></svg></span>
+  <span class="lbl"><strong>Just ask Chuck</strong><span>I'll organize the rest</span></span>
+  <span class="arr" aria-hidden="true">→</span>
+</a>
+
+<script>
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
