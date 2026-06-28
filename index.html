@@ -10,16 +10,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#faf7f2;
-    --bg-warm:#f4eee3;
-    --ink:#1a1712;
-    --ink-soft:#5c564b;
-    --line:#e2d9c9;
-    --gold:#b8924a;
-    --gold-deep:#9a7635;
-    --gold-light:#d8b978;
-    --navy:#16243c;
-    --navy-soft:#2a3c58;
+    --bg:#0e141d;
+    --bg-warm:#141b25;
+    --panel:#1a2330;
+    --ink:#f0e8d8;
+    --ink-soft:#9aa1ad;
+    --line:#283242;
+    --gold:#c8a25c;
+    --gold-deep:#c19654;
+    --gold-light:#e6cd8c;
+    --navy:#1c2e49;
+    --navy-soft:#33486a;
     --serif:'Cormorant Garamond', Georgia, serif;
     --sans:'Jost', -apple-system, system-ui, sans-serif;
     --max:1140px;
@@ -35,8 +36,8 @@
 
   /* ---------- masthead ---------- */
   .top-rule{height:3px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--navy));}
-  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;background:rgba(250,247,242,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
-  .mast{display:flex;align-items:center;justify-content:space-between;padding:26px 0;gap:20px;}
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;background:rgba(14,20,29,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);}
+  .mast{display:flex;align-items:center;justify-content:space-between;padding-top:24px;padding-bottom:24px;gap:20px;}
   .brand{font-family:var(--serif);font-size:1.5rem;letter-spacing:.06em;font-weight:500;line-height:1;text-decoration:none;}
   .brand small{display:block;font-family:var(--sans);font-size:.54rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-deep);margin-top:3px;font-weight:500;}
   .navlinks{display:flex;gap:30px;align-items:center;}
@@ -47,7 +48,7 @@
 
   /* ---------- editorial section header ---------- */
   .sec{padding:68px 0;}
-  .sec-top{display:flex;align-items:baseline;gap:18px;border-top:1.5px solid var(--ink);padding-top:16px;margin-bottom:38px;}
+  .sec-top{display:flex;align-items:baseline;gap:18px;border-top:1.5px solid var(--gold-deep);padding-top:16px;margin-bottom:38px;}
   .sec-top .num{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--gold-deep);line-height:1;}
   .sec-top h2{font-size:clamp(1.9rem,4vw,2.9rem);margin-left:auto;text-align:right;max-width:62%;}
   .sec-top .kicker{align-self:center;}
@@ -56,14 +57,34 @@
   .hero{position:relative;padding:64px 0 76px;overflow:hidden;
     background:radial-gradient(120% 80% at 92% 0%, rgba(184,146,74,.16), transparent 52%),
                radial-gradient(70% 60% at -5% 110%, rgba(22,36,60,.07), transparent 60%),var(--bg);}
-  .hero:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(26,23,18,.03) 1px, transparent 1px);background-size:24px 24px;opacity:.55;}
-  .hero-inner{position:relative;z-index:2;}
+  .hero:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px);background-size:24px 24px;opacity:.5;}
+  .hero-inner{position:relative;z-index:3;}
+  /* video background */
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
+  .hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;}
+  .hero-vid.active{opacity:1;}
+  .hero-veil{position:absolute;inset:0;z-index:1;background:
+    linear-gradient(90deg, rgba(13,18,26,.94) 0%, rgba(13,18,26,.7) 52%, rgba(13,18,26,.5) 100%),
+    linear-gradient(180deg, rgba(13,18,26,.35) 0%, transparent 32%, rgba(13,18,26,.92) 100%),
+    radial-gradient(120% 80% at 92% 0%, rgba(184,146,74,.16), transparent 52%);}
   .hero-kick{display:flex;align-items:center;gap:16px;margin-bottom:26px;}
   .hero-kick .rule{height:1px;flex:1;max-width:80px;background:var(--gold);}
   .hero h1{font-size:clamp(2.8rem,7.4vw,5.4rem);margin-bottom:36px;letter-spacing:-.5px;}
   .hero h1 .em .avg{font-size:.38em;font-style:normal;font-weight:400;letter-spacing:.01em;color:var(--gold-deep);opacity:.8;vertical-align:middle;margin-left:8px;}
   .hero-sub{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:300;color:var(--ink-soft);max-width:620px;line-height:1.4;}
   .hero-sub b{color:var(--ink);font-weight:500;font-style:italic;}
+  /* hero chat-flow demo */
+  .chat{width:100%;max-width:560px;min-height:182px;display:flex;flex-direction:column;justify-content:flex-end;gap:12px;}
+  .bubble{max-width:84%;max-height:200px;padding:12px 17px;border-radius:17px;font-family:var(--sans);font-size:1rem;font-weight:300;line-height:1.42;opacity:0;transform:translateY(16px);
+    transition:opacity .5s ease, transform .5s cubic-bezier(.2,.7,.2,1), max-height .45s ease, margin .45s ease, padding .45s ease;
+    box-shadow:0 12px 32px -18px rgba(0,0,0,.7);}
+  .bubble.in{opacity:1;transform:none;}
+  .bubble.out{opacity:0;transform:translateY(-14px);max-height:0;margin-top:-12px;padding-top:0;padding-bottom:0;overflow:hidden;box-shadow:none;}
+  .bubble.me{align-self:flex-end;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));color:#1c1407;border-bottom-right-radius:5px;}
+  .bubble.chuck{align-self:flex-start;background:rgba(26,40,63,.94);color:#eaf0f7;border:1px solid var(--navy-soft);border-bottom-left-radius:5px;}
+  .bubble .nm{display:block;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:3px;opacity:.7;font-weight:500;}
+  .bubble.me .nm{color:#5a3f15;opacity:.85;}
+  .bubble.chuck .nm{color:var(--gold-light);}
 
   /* golden offer — navy feature box */
   .offer{position:relative;background:var(--navy);color:#f4ecdd;border-radius:5px;padding:32px 34px;box-shadow:0 30px 60px -34px rgba(22,36,60,.8);}
@@ -82,13 +103,13 @@
   .step .n{font-family:var(--serif);font-style:italic;font-size:3rem;color:var(--gold);line-height:1;display:block;margin-bottom:14px;}
   .step h3{font-size:1.5rem;margin-bottom:9px;}
   .step p{font-size:.92rem;color:var(--ink-soft);}
-  .punch{margin-top:34px;font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.6vw,2rem);color:var(--navy);text-align:center;}
+  .punch{margin-top:34px;font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,2.6vw,2rem);color:var(--ink);text-align:center;}
   .punch b{color:var(--gold-deep);font-style:normal;font-weight:500;}
 
   /* ---------- services ---------- */
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
-  .svc{background:var(--bg);padding:26px 28px;transition:.3s;}
-  .svc:hover{background:#fffdf8;}
+  .svc{background:var(--panel);padding:26px 28px;transition:.3s;}
+  .svc:hover{background:#212c3c;}
   .svc .h{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;}
   .svc .h .i{font-size:.8rem;color:var(--gold);}
   .svc h3{font-size:1.4rem;}
@@ -105,7 +126,7 @@
   .quote p{font-family:var(--serif);font-size:1.18rem;line-height:1.38;color:var(--ink);font-weight:300;margin-bottom:16px;flex:1;}
   .quote p .hl{color:var(--gold-deep);font-style:italic;}
   .who{display:flex;align-items:center;gap:11px;}
-  .who .av{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:1rem;color:#fff;background:var(--navy);}
+  .who .av{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:1rem;color:#1a130a;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));}
   .who b{font-family:var(--sans);font-weight:500;font-size:.84rem;display:block;}
   .who span{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);}
 
@@ -166,12 +187,12 @@
   .meet-copy .kicker{display:block;margin-bottom:14px;}
   .meet-copy h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:18px;}
   .meet-copy p{font-size:1.16rem;color:var(--ink-soft);margin:0 auto 22px;}
-  .meet-copy .sig{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--navy);}
+  .meet-copy .sig{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--gold-light);}
 
   /* ---------- responsive ---------- */
   @media (max-width:880px){
     .wrap{padding:0 26px;}
-    .mast{padding:34px 0;}
+    .mast{padding-top:26px;padding-bottom:26px;}
     .hero-grid{grid-template-columns:1fr;gap:32px;}
     .meet{grid-template-columns:1fr;gap:26px;}
     .portrait .ph{max-width:300px;}
@@ -197,7 +218,7 @@
 
 <header>
   <div class="wrap mast">
-    <a class="brand" href="index.html">Casa Nomad<small>Concierge</small></a>
+    <a class="brand" href="index.html">Casa Nomad<small>Lifestyle Concierge</small></a>
     <nav class="navlinks">
       <a class="ghost" href="#how">How it works</a>
       <a class="ghost" href="#words">Clients</a>
@@ -208,13 +229,19 @@
 
 <!-- HERO — one banner, one pitch -->
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <video class="hero-vid active" autoplay muted playsinline preload="auto" src="assets/car.mp4"></video>
+    <video class="hero-vid" autoplay muted playsinline preload="auto" src="assets/jet.mp4"></video>
+    <video class="hero-vid" autoplay muted playsinline preload="auto" data-start="7" src="assets/villa.mp4"></video>
+    <div class="hero-veil"></div>
+  </div>
   <div class="wrap hero-inner">
     <div class="hero-kick">
       <span class="rule"></span>
-      <span class="kicker">Private Concierge · Available 24/7</span>
+      <span class="kicker">Lifestyle Concierge · Available 24/7</span>
     </div>
     <h1>Whatever you wish,<br><span class="em">consider it solved in &lt;24h <span class="avg">(avg. 7.4h)</span></span></h1>
-    <p class="hero-sub">No tabs, no calls, no chasing — <b>just one message away.</b></p>
+    <div class="chat" aria-label="Example booking conversation"></div>
   </div>
 </section>
 
@@ -324,7 +351,7 @@
 
 <footer>
   <div class="wrap foot">
-    <a class="brand" href="index.html" style="text-decoration:none;">Casa Nomad<small>Private Concierge · 24/7</small></a>
+    <a class="brand" href="index.html" style="text-decoration:none;">Casa Nomad<small>Lifestyle Concierge · 24/7</small></a>
     <nav class="foot-nav">
       <a href="#how">How it works</a>
       <a href="#words">Clients</a>
@@ -345,6 +372,85 @@
 <script>
   const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.16});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // alternating hero videos: car -> jet -> villa, cross-fading
+  (function(){
+    const vids=[].slice.call(document.querySelectorAll('.hero-vid'));
+    if(!vids.length) return;
+    let i=0, timer;
+    const MAX=20000; // fallback if a clip's duration is unknown
+    function advance(){ i=(i+1)%vids.length; show(i); }
+    function startOf(v){ return parseFloat(v.dataset.start)||0; }
+    function show(n){
+      vids.forEach(function(v,idx){
+        const on = idx===n;
+        v.classList.toggle('active', on);
+        if(on){
+          try{ v.currentTime=startOf(v); }catch(e){}
+          const p=v.play(); if(p&&p.catch) p.catch(function(){});
+        } else {
+          v.pause();
+        }
+      });
+      const cur=vids[n];
+      const dur=(isFinite(cur.duration)&&cur.duration>0)?((cur.duration-startOf(cur))*1000+1500):MAX;
+      clearTimeout(timer); timer=setTimeout(advance, dur);
+    }
+    vids.forEach(function(v){
+      v.addEventListener('ended', advance);
+      v.addEventListener('error', advance);
+    });
+    show(0);
+  })();
+
+  // hero chat-flow: alternating booking conversations, max 2 bubbles visible
+  (function(){
+    const chat=document.querySelector('.chat');
+    if(!chat) return;
+    const convos=[
+      [['me','Hey Chuck, can you get me a VIP table at Hotel XYZ in Cannes?'],
+       ['chuck','Sure — how about tomorrow, 19:00?'],
+       ['me','Perfect, I’ll take it.'],
+       ['chuck','Consider it done. Here’s your discreet payment link.']],
+      [['me','Need a private chauffeur in Monaco this weekend.'],
+       ['chuck','A black S-Class, Sat–Sun. Works?'],
+       ['me','Exactly that.'],
+       ['chuck','Booked. Payment link on its way.']],
+      [['me','A private villa in Ibiza for six, next month?'],
+       ['chuck','Found three with sea views — sending now.'],
+       ['me','The second one. Love it.'],
+       ['chuck','Yours. Here’s your secure link.']],
+      [['me','Can you fly me to Mykonos on Friday morning?'],
+       ['chuck','Light jet, 08:30 wheels-up. Good?'],
+       ['me','Perfect.'],
+       ['chuck','Done. Discreet payment link attached.']]
+    ];
+    const STEP=2150, HOLD=1700, FADE=520;
+    let ci=0;
+    function bubble(who,text){
+      const b=document.createElement('div');
+      b.className='bubble '+who;
+      b.innerHTML='<span class="nm">'+(who==='chuck'?'Chuck':'You')+'</span>'+text;
+      chat.appendChild(b);
+      const live=chat.querySelectorAll('.bubble:not(.out)');
+      if(live.length>2){ const old=live[0]; old.classList.add('out'); setTimeout(function(){ if(old.parentNode) old.remove(); }, FADE); }
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ b.classList.add('in'); }); });
+    }
+    function clearAll(cb){
+      chat.querySelectorAll('.bubble:not(.out)').forEach(function(b){ b.classList.add('out'); setTimeout(function(){ if(b.parentNode) b.remove(); }, FADE); });
+      setTimeout(cb, FADE+60);
+    }
+    function runConvo(convo, done){
+      let mi=0;
+      (function step(){
+        if(mi>=convo.length){ setTimeout(function(){ clearAll(done); }, HOLD); return; }
+        bubble(convo[mi][0], convo[mi][1]); mi++;
+        setTimeout(step, STEP);
+      })();
+    }
+    function loop(){ runConvo(convos[ci], function(){ ci=(ci+1)%convos.length; loop(); }); }
+    setTimeout(loop, 2500);
+  })();
 </script>
 </body>
 </html>
